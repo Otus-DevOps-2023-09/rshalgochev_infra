@@ -1,0 +1,28 @@
+#cloud-config
+datasource:
+ Ec2:
+  strict_id: false
+ssh_pwauth: no
+users:
+- name: yc-user
+  sudo: ALL=(ALL) NOPASSWD:ALL
+  shell: /bin/bash
+  ssh_authorized_keys:
+    - "ssh-rsa"
+
+package_upgrade: true
+
+packages:
+  - ruby-full
+  - ruby-bundler
+  - build-essential
+  - mongodb
+  - git
+
+runcmd:
+  - systemctl enable mongodb
+  - systemctl start mongodb
+  - [ sh, -c, "cd /home/yc-user && git clone -b monolith https://github.com/express42/reddit.git && chown -R yc-user:yc-user /home/yc-user/reddit" ]
+
+bootcmd:
+  - [ sh, -c, "cd /home/yc-user/reddit && bundle install && puma -d" ]
