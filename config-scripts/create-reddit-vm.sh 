@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+    echo There shoud be 2 parameters passed: instance name, path to public ssh-key.
+    exit 1
+fi
+
+NAME=$1
+KEY_PATH=$2
+IMAGE_ID=$(yc compute image list | grep reddit-full | awk -F '|' '{print $3}' | sed 's/ //')
+
+yc compute instance create \
+  --name "$NAME" \
+  --hostname "$NAME" \
+  --memory=4 \
+  --create-boot-disk image-id="$IMAGE_ID",size=10GB \
+  --network-interface subnet-name=default-ru-central1-a,nat-ip-version=ipv4 \
+  --metadata serial-port-enable=1 \
+  --ssh-key "$KEY_PATH"
