@@ -1,8 +1,8 @@
 {
-  "service_key_path": "path_to_key",
+  "service_key_path": "mock.json",
   "folder_id": "your_folder_id",
   "image_id": "base_image_id",
-  "ruby_script_path": "path_to_install_ruby.sh",
-  "mongo_script_path": "path_to_install_mongodb.sh",
-  "puma_service_path": "path_to_puma_service"
+  "ruby_script_path": "../config-scripts/install_ruby.sh",
+  "mongo_script_path": "../config-scripts/install_mongodb.sh",
+  "puma_service_path": "../config-scripts/puma.service"
 }

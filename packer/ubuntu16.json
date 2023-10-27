@@ -23,14 +23,14 @@
 	    ]
 	},
 	{
-            "type": "shell",
-            "script": "../config-scripts/install_ruby.sh",
-            "execute_command": "sudo {{.Path}}"
-        },
-        {
-            "type": "shell",
-            "script": "../config-scripts/install_mongodb.sh",
-            "execute_command": "sudo {{.Path}}"
-        }
+        "type": "shell",
+        "script": "{{user `ruby_script_path`}}",
+        "execute_command": "sudo {{.Path}}"
+    },
+    {
+        "type": "shell",
+        "script": "{{user `mongo_script_path`}}",
+        "execute_command": "sudo {{.Path}}"
+    }
     ]
 }
