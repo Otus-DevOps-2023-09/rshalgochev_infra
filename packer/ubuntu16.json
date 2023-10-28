@@ -1,0 +1,36 @@
+{
+    "builders": [
+        {
+            "type": "yandex",
+            "service_account_key_file": "{{user `service_key_path`}}",
+            "folder_id": "{{user `folder_id`}}",
+            "source_image_family": "{{user `image_id`}}",
+            "image_name": "reddit-base-{{timestamp}}",
+            "image_family": "reddit-base",
+            "ssh_username": "ubuntu",
+            "platform_id": "standard-v1",
+	    "use_ipv4_nat": "true"
+        }
+    ],
+    "provisioners": [
+	{
+	    "type": "shell",
+	    "inline": [
+		"sudo rm /var/lib/apt/lists/lock",
+		"sudo rm /var/cache/apt/archives/lock",
+		"sudo rm /var/lib/dpkg/lock*",
+		"sudo dpkg --configure -a"
+	    ]
+	},
+	{
+        "type": "shell",
+        "script": "{{user `ruby_script_path`}}",
+        "execute_command": "sudo {{.Path}}"
+    },
+    {
+        "type": "shell",
+        "script": "{{user `mongo_script_path`}}",
+        "execute_command": "sudo {{.Path}}"
+    }
+    ]
+}

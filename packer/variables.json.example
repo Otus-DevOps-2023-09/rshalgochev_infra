@@ -1,0 +1,8 @@
+{
+  "service_key_path": "mock.json",
+  "folder_id": "your_folder_id",
+  "image_id": "base_image_id",
+  "ruby_script_path": "./scripts/install_ruby.sh",
+  "mongo_script_path": "./scripts/install_mongodb.sh",
+  "puma_service_path": "./scripts/puma.service"
+}
