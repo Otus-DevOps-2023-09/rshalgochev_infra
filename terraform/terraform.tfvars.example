@@ -1,0 +1,7 @@
+cloud_id         = "Your cloud_id"
+folder_id        = "Your folder_id"
+service_account_key  = "../../key.json"
+zone             = "Your zone"
+bucket_name      = "my_bucket"
+access_key       = "my_access_key"
+secret_key       = "my_secret_key"
