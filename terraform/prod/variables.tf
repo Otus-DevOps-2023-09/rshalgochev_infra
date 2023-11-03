@@ -15,9 +15,6 @@ variable "zone" {
   # Значение по умолчанию
   default = "ru-central1-a"
 }
-variable "image_id" {
-  description = "Image_id"
-}
 variable "subnet_id" {
   description = "Subnet_id"
 }
@@ -31,10 +28,6 @@ variable "region_id" {
   description = "Region"
   default     = "ru-central1"
 }
-variable "instances_count" {
-  description = "Count instances"
-  default     = 1
-}
 variable "app_disk_image" {
   description = "Disk image for reddit app"
   default     = "reddit-app-base"
@@ -42,12 +35,4 @@ variable "app_disk_image" {
 variable "db_disk_image" {
   description = "Disk image for reddit app"
   default     = "reddit-db-base"
-}
-variable "bucket_name" {
-  description = "Name of S3 bucket"
-  type        = string
-}
-variable "env" {
-  description = "Name of environment"
-  type        = string
 }

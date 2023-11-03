@@ -12,3 +12,9 @@ variable "env" {
   description = "Name of environment"
   type = string
 }
+variable "private_key_path" {
+  description = "Connection private key file"
+}
+variable "db_ip_address" {
+  description = "Database IP-address"
+}
