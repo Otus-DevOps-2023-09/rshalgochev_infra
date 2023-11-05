@@ -9,10 +9,16 @@ if [ ! -f /etc/systemd/system/puma.service ]; then
   sudo systemctl daemon-reload
   sudo systemctl enable puma
 fi
-sleep 10s
-sudo apt-get update
-sleep 10s
-sudo apt-get install -y git
+
+until sudo apt-get update 2>&1;
+do
+  sleep 1
+done
+
+until sudo apt-get install -y git 2>&1;
+do
+  sleep 1
+done
 
 if [ ! -d $APP_HOME ]; then
   sudo mkdir -p $APP_HOME

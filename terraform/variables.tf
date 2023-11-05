@@ -15,23 +15,12 @@ variable "zone" {
   # Значение по умолчанию
   default = "ru-central1-a"
 }
-variable "image_id" {
-  description = "Image_id"
+variable "bucket_name" {
+  description = "Name of S3 bucket"
 }
-variable "subnet_id" {
-  description = "Subnet_id"
+variable "access_key" {
+  description = "S3 access key"
 }
-variable "public_key_path" {
-  description = "Connection public key file"
-}
-variable "private_key_path" {
-  description = "Connection private key file"
-}
-variable "region_id" {
-  description = "Region"
-  default     = "ru-central1"
-}
-variable "instances_count" {
-  description = "Count instances"
-  default     = 1
+variable "secret_key" {
+  description = "S3 secret key"
 }

@@ -1,3 +1,6 @@
 #!/bin/bash
 apt-get update
-apt-get install -y mongodb
+until apt-get install -y mongodb 2>&1;
+do
+  sleep 1
+done
