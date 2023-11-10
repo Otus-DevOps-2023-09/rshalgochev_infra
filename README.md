@@ -91,5 +91,5 @@ terraform/stage
 Написал плейбук и скрипт для динамического формирования инвентори.
 Чтобы запустить плейбук после создания инфраструктуры выполняем команду
 ```shell
-    ansible-plyabook clone.yml
+    ansible-plyabook -i dynamic_inv.sh clone.yml
 ```
