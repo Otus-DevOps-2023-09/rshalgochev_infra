@@ -1,3 +1,13 @@
+#terraform {
+#  required_providers {
+#    yandex = {
+#      source  = "yandex-cloud/yandex"
+#      version = "~>0.35"
+#    }
+#  }
+#  required_version = ">= 0.13"
+#}
+
 resource "yandex_compute_instance" "app" {
   name = "reddit-app-${var.env}"
   labels = {
@@ -27,13 +37,13 @@ resource "yandex_compute_instance" "app" {
     private_key = file(var.private_key_path)
   }
   provisioner "file" {
-    source      = "${path.module}/puma.service"
+    source      = "puma.service"
     destination = "/tmp/puma.service"
   }
   provisioner "remote-exec" {
     script = "../files/deploy.sh"
   }
-  depends_on = []
+  depends_on = [local_file.template_puma]
 }
 
 resource "local_file" "template_puma" {
