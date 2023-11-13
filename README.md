@@ -87,3 +87,9 @@ terraform/stage
     ```shell
     terraform destroy
     ```
+### ДЗ №8 ###
+Написал плейбук и скрипт для динамического формирования инвентори.
+Чтобы запустить плейбук после создания инфраструктуры выполняем команду
+```shell
+    ansible-plyabook -i dynamic_inv.sh clone.yml
+```
