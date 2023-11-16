@@ -1,5 +1,5 @@
 {
-  "service_key_path": "mock.json",
+  "service_key_path": "packer/mock.json",
   "folder_id": "your_folder_id",
   "image_id": "base_image_id",
   "ruby_script_path": "./scripts/install_ruby.sh",
