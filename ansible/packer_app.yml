@@ -1,0 +1,14 @@
+---
+- name: Configure app env
+  hosts: all
+  become : true
+  tasks:
+    - name: Ensure ruby installed
+      apt:
+        name: "{{ item }}"
+        state: present
+        update_cache: yes
+      loop:
+        - ruby-full
+        - ruby-bundler
+        - build-essential

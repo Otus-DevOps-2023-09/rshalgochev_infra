@@ -26,12 +26,12 @@ resource "yandex_compute_instance" "db" {
     cores    = 2
     memory   = 2
   }
-  provisioner "remote-exec" {
-    inline = [
-      "sudo sed -i 's/127.0.0.1/0.0.0.0/g /etc/mongod.conf",
-      "sudo systemctl restart mongod"
-    ]
-  }
+#  provisioner "remote-exec" {
+#    inline = [
+#      "sudo sed -i 's/127.0.0.1/0.0.0.0/g /etc/mongod.conf",
+#      "sudo systemctl restart mongod"
+#    ]
+#  }
   metadata = {
     ssh-keys = "ubuntu:${file(var.public_key_path)}"
   }

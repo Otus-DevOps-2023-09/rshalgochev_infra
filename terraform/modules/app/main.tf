@@ -36,23 +36,23 @@ resource "yandex_compute_instance" "app" {
     agent       = false
     private_key = file(var.private_key_path)
   }
-  provisioner "file" {
-    source      = "puma.service"
-    destination = "/tmp/puma.service"
-  }
-  provisioner "remote-exec" {
-    script = "../files/deploy.sh"
-  }
-  depends_on = [local_file.template_puma]
+#  provisioner "file" {
+#    source      = "puma.service"
+#    destination = "/tmp/puma.service"
+#  }
+#  provisioner "remote-exec" {
+#    script = "../files/deploy.sh"
+#  }
+#  depends_on = [local_file.template_puma]
 }
 
-resource "local_file" "template_puma" {
-  content = templatefile("${path.module}/puma.tpl", {db_address = var.db_ip_address})
-  filename = "puma.service"
-
-  provisioner "local-exec" {
-    when = destroy
-    command = "mv ${path.module}/puma.service ${path.module}/puma.service.back"
-    on_failure = continue
-  }
-}
+#resource "local_file" "template_puma" {
+#  content = templatefile("${path.module}/puma.tpl", {db_address = var.db_ip_address})
+#  filename = "puma.service"
+#
+#  provisioner "local-exec" {
+#    when = destroy
+#    command = "mv ${path.module}/puma.service ${path.module}/puma.service.back"
+#    on_failure = continue
+#  }
+#}

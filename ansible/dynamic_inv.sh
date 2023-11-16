@@ -1,7 +1,7 @@
 #!/bin/bash
 
-APPSERVER=`yc compute instance list | grep reddit-app | awk '{print $10}'`
-DBSERVER=`yc compute instance list | grep reddit-db | awk '{print $10}'`
+APPSERVER=`cd ../terraform/stage && terraform output | grep app | awk '{print $3}' | sed 's/\"//g'`
+DBSERVER=`cd ../terraform/stage && terraform output | grep db | awk '{print $3}' | sed 's/\"//g'`
 
 cat<<EOF
 {
