@@ -93,3 +93,10 @@ terraform/stage
 ```shell
     ansible-plyabook -i dynamic_inv.sh clone.yml
 ```
+### ДЗ №9 ###
+Написал плейбкуи для настройки базы данных и приложения, переписал скрипт для
+динамического формирования инвентаря на использование terraform output
+Для запуска деплоя прилодения выполнить команду
+```shell
+   ansible-playbook -i dynamic_inv.sh site.yml
+```
