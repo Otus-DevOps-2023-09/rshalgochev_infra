@@ -1,22 +1,24 @@
 ---
 - name: Show info about the env this host belows to
-  debug:
+  ansible.builtin.debug:
     msg: "This host is in {{ env }} environment!!!"
 
 - name: Add unit file for Puma
-  copy:
+  ansible.builtin.copy:
     src: files/puma.service
     dest: /etc/systemd/system/puma.service
-  notify: reload puma
+    mode: U=rw, G=r, O=
+  notify: Reload puma
 
 - name: Add config for DB connection
-  template:
+  ansible.builtin.template:
     src: templates/db_config.j2
     dest: /home/ubuntu/db_config
     owner: ubuntu
     group: ubuntu
+    mode: U=rw, G=r, O=r
 
-- name: enable puma
-  systemd:
+- name: Enable puma
+  ansible.builtin.systemd:
     name: puma
-    enabled: yes
+    enabled: true

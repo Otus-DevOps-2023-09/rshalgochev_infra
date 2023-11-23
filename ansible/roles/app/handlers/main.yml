@@ -1,5 +1,5 @@
 ---
-- name: reload puma
-  systemd:
+- name: Reload puma
+  ansible.builtin.systemd:
     name: puma
     state: restarted

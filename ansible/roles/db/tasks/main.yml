@@ -1,10 +1,10 @@
 ---
 - name: Show info about the env this host belows to
-  debug:
+  ansible.builtin.debug:
     msg: "This host is in {{ env }} environment!!!"
 - name: Change mongo config file
-  template:
-    src : templates/mongod.conf.j2
+  ansible.builtin.template:
+    src: templates/mongod.conf.j2
     dest: /etc/mongod.conf
-    mode: 0644
-  notify: restart mongod
+    mode: U=rw, G=r, O=r
+  notify: Restart mongod
