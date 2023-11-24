@@ -1,5 +1,5 @@
 ---
 - name: Restart mongod
-  ansible.builtin.service:
+  service:
     name: mongod
     state: restarted
